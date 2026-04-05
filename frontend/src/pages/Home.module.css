@@ -1,0 +1,220 @@
+.homeContainer {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+    overflow: hidden;
+}
+
+.backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+}
+
+/* Optional overlay to ensure text readability if bg is busy */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    max-width: 50%;
+}
+
+.imageContainer {
+    position: absolute;
+    right: 5%;
+    bottom: 0;
+    z-index: 5;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+.profilePic {
+    height: 90%;
+    width: auto;
+    object-fit: contain;
+    object-position: bottom right;
+    margin-bottom: 50px;
+    /* Move image up */
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+.line {
+    width: 60px;
+    height: 4px;
+    background-color: var(--ink-black);
+    margin-bottom: 20px;
+    border-radius: 2px;
+}
+
+.nameLabel {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: var(--ink-gray);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.title {
+    font-family: 'Zen Brush Old Mincho', serif;
+    font-size: 5rem;
+    /* Larger title */
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--ink-black);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--ink-gray);
+    margin-bottom: 40px;
+    max-width: 500px;
+    font-weight: 500;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 20px;
+}
+
+.primaryButton {
+    position: relative;
+    padding: 14px 35px;
+    background-color: var(--ink-black);
+    color: var(--rice-paper);
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.primaryButton:hover {
+    transform: scale(1.05);
+}
+
+.inkSplash {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(204, 51, 51, 0.6) 0%, transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.primaryButton:hover .inkSplash {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.secondaryButton {
+    padding: 14px 30px;
+    border: 2px solid var(--ink-black);
+    color: var(--ink-black);
+    font-weight: 600;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.secondaryButton:hover {
+    background-color: var(--ink-black);
+    color: var(--rice-paper);
+}
+
+@media (max-width: 768px) {
+    .homeContainer {
+        padding: 5% 20px;
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .overlay {
+        background: rgba(249, 247, 242, 0.85);
+        /* More opacity on mobile */
+    }
+
+    .content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .imageContainer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        opacity: 0.5;
+        /* fade the image out on mobile */
+        z-index: -1;
+    }
+
+    .profilePic {
+        width: 100%;
+        height: auto;
+        max-height: 50vh;
+        object-position: bottom center;
+        mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%);
+        -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .line {
+        margin: 0 auto 20px;
+    }
+
+    .buttonGroup {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .primaryButton,
+    .secondaryButton {
+        justify-content: center;
+        width: 100%;
+    }
+}

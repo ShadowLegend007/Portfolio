@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&family=Zen+Brush+Old+Mincho&display=swap');
+
+:root {
+  --ink-black: #1a1a1a;
+  --ink-gray: #4a4a4a;
+  --rice-paper: #f9f7f2;
+  --seal-red: #cc3333;
+  --wash-gray: rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Serif JP', serif;
+  background-color: var(--rice-paper);
+  color: var(--ink-black);
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  /* Add subtle paper texture if desired later */
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stewardship='true'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--rice-paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink-gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-black);
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.page-container {
+    padding-top: 80px; /* Space for fixed navbar */
+    height: 100vh;
+    overflow: hidden;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
