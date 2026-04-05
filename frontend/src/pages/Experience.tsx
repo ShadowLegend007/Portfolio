@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { homeBg as bg } from '../assets/assets';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const spinOnceStyle = `
   @keyframes spinOnce {
@@ -81,7 +82,7 @@ function useInView(threshold = 0.2) {
   return [ref, inView] as const;
 }
 
-function TimelineEntry({ entry, index }: { entry: typeof experienceData[0], index: number }) {
+function TimelineEntry({ entry, index, isMobile }: { entry: typeof experienceData[0], index: number, isMobile: boolean }) {
   const [ref, inView] = useInView(0.15);
   const [hovered, setHovered] = useState(false);
   const [spinKey, setSpinKey] = useState(0);
@@ -171,7 +172,7 @@ function TimelineEntry({ entry, index }: { entry: typeof experienceData[0], inde
         <div
           style={{
             paddingBottom: "4rem",
-            paddingLeft: "1.5rem",
+            paddingLeft: isMobile ? "0.8rem" : "1.5rem",
             flex: 1,
             transform: hovered ? "translateX(8px)" : "translateX(0px)",
             transition: "transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94)",
@@ -212,7 +213,7 @@ function TimelineEntry({ entry, index }: { entry: typeof experienceData[0], inde
                 fontWeight: 600,
                 marginBottom: "0.5rem",
                 marginTop: 0,
-                fontSize: "1.1rem",
+                fontSize: isMobile ? "0.95rem" : "1.1rem",
                 letterSpacing: "0.02em",
                 color: "#111827",
                 lineHeight: 1.3,
@@ -269,6 +270,7 @@ function TimelineEntry({ entry, index }: { entry: typeof experienceData[0], inde
 
 export default function ExperienceTimeline() {
   const [headerRef, headerInView] = useInView(0.2);
+  const isMobile = useIsMobile();
 
   return (
     <div
@@ -280,7 +282,7 @@ export default function ExperienceTimeline() {
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "flex-start",
-        padding: "4rem 15% 4rem",
+        padding: isMobile ? "4rem 5% 4rem" : "4rem 15% 4rem",
         backgroundImage: `url(${bg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -315,7 +317,7 @@ export default function ExperienceTimeline() {
           </div>
           <h2
             style={{
-              fontSize: "4rem",
+              fontSize: isMobile ? "2.5rem" : "4rem",
               fontFamily: "'Zen Brush Old Mincho', serif",
               color: "#374151",
               letterSpacing: "-0.01em",
@@ -345,7 +347,7 @@ export default function ExperienceTimeline() {
           {/* Entries */}
           <div>
             {experienceData.map((entry, index) => (
-              <TimelineEntry key={entry.id} entry={entry} index={index} />
+              <TimelineEntry key={entry.id} entry={entry} index={index} isMobile={isMobile} />
             ))}
           </div>
         </div>

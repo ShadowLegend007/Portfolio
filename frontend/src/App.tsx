@@ -1,6 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import PageTransitionOverlay from "./components/PageTransitionOverlay";
+import SakuraAnimation from "./components/SakuraAnimation";
 import Home from "./pages/Home";
 
 import Skills from "./pages/Skills";
@@ -22,6 +23,7 @@ const App = () => {
       <SiteLoader />
       <TransitionProvider>
         <PageTransitionOverlay />
+        <SakuraAnimation />
         <Navbar />
         <div className="page-container">
           <Routes>

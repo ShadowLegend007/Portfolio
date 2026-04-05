@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { educationBg as bg } from '../assets/assets';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const projectsData = [
   {
@@ -72,6 +73,7 @@ export default function Projects() {
   const filters = ["ALL", "WEB DEVELOPMENT", "AI & ML", "PROGRAMMING"];
 
   const visibleProjects = useAnimatedFilter(projectsData, activeFilter);
+  const isMobile = useIsMobile();
 
   return (
     <>
@@ -123,7 +125,7 @@ export default function Projects() {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center", // Center vertically when it fits
-          padding: "1rem 12% 1rem",
+          padding: isMobile ? "1rem 5% 1rem" : "1rem 12% 1rem",
           backgroundImage: `url(${bg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -151,7 +153,7 @@ export default function Projects() {
             </div>
             <h2
               style={{
-                fontSize: "2.8rem",
+                fontSize: isMobile ? "2rem" : "2.8rem",
                 fontFamily: "'Zen Brush Old Mincho', serif",
                 color: "#374151",
                 letterSpacing: "-0.01em",
@@ -195,10 +197,10 @@ export default function Projects() {
           {/* Grid Layout */}
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+            gridTemplateColumns: isMobile ? "repeat(auto-fill, minmax(min(100%, 260px), 1fr))" : "repeat(auto-fill, minmax(280px, 1fr))",
             gap: "1.5rem",
             width: "100%"
-          }}>
+          }} >
             {visibleProjects.map((project, i) => (
               <div
                 key={project.id}

@@ -16,7 +16,10 @@ const Contact = () => {
     e.preventDefault();
     setStatus('sending');
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+      const apiUrl = import.meta.env.VITE_API_URL;
+      if (!apiUrl) {
+        throw new Error("VITE_API_URL is missing in frontend .env file! Connection requires a valid backend URL.");
+      }
       const res = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

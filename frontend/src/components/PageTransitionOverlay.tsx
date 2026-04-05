@@ -34,7 +34,7 @@ const PageTransitionOverlay = () => {
             position: 'fixed',
             inset: 0,
             backgroundColor: '#ffffff',
-            zIndex: 9999,
+            zIndex: 9998,
             pointerEvents: phase === 'idle' ? 'none' : 'auto',
             ...animationStyle
         }} />

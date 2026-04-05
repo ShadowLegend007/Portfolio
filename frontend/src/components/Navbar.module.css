@@ -96,3 +96,30 @@
         transform: translateX(0);
     }
 }
+
+@media (max-width: 649px) {
+    .navbar {
+        height: 80px;
+        padding: 0 15px;
+    }
+
+    .hamburger {
+        right: 15px;
+    }
+
+    .navLinks {
+        top: 80px;
+        height: calc(100vh - 80px);
+        gap: 20px;
+    }
+
+    .link, .activeLink {
+        font-size: 0.8rem;
+        padding: 10px 15px;
+    }
+
+    .logoIcon {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}

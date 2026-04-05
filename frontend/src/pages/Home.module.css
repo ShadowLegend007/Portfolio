@@ -6,7 +6,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 10%;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .backgroundImage {
@@ -58,8 +59,8 @@
     object-position: bottom right;
     margin-bottom: 50px;
     /* Move image up */
-    mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
-    -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 75%);
 }
 
 .line {
@@ -158,53 +159,78 @@
     background-color: var(--ink-black);
     color: var(--rice-paper);
 }
-
-@media (max-width: 768px) {
+@media (max-width: 1175px) {
     .homeContainer {
-        padding: 5% 20px;
-        flex-direction: column-reverse;
-        justify-content: center;
+        padding: 5% 5%;
+        flex-direction: column; /* Normal layout stacking vertically */
+        justify-content: flex-start;
+        align-items: center;
         text-align: center;
         gap: 30px;
     }
 
     .overlay {
-        background: rgba(249, 247, 242, 0.85);
-        /* More opacity on mobile */
-    }
-
-    .content {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        max-width: 100%;
+        background: rgba(249, 247, 242, 0.7); /* ensure text is legible over the background */
     }
 
     .imageContainer {
-        position: relative;
+        position: relative; /* Break out of absolute positioning */
         width: 100%;
         height: auto;
+        min-height: 300px;
+        max-height: 45vh; /* Keep it nicely sized based on screen height */
+        display: flex;
         justify-content: center;
-        opacity: 0.5;
-        /* fade the image out on mobile */
-        z-index: -1;
+        align-items: flex-end;
+        pointer-events: none;
+        order: 1; /* Show image above text */
+        opacity: 0.9;
+        margin-top: 20px;
+        right: auto;
+        bottom: auto;
+    }
+
+    .content {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        order: 2; /* Render text below the picture */
+        z-index: 10;
+        padding-bottom: 60px; /* buffer for bottom scrolling */
     }
 
     .profilePic {
-        width: 100%;
-        height: auto;
-        max-height: 50vh;
+        height: 100%;
+        width: auto;
+        object-fit: contain;
         object-position: bottom center;
-        mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%);
-        -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%);
+        margin-bottom: 0;
+        mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 80%);
+        -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 80%);
     }
 
     .title {
-        font-size: 3rem;
+        font-size: 4rem;
     }
 
     .line {
         margin: 0 auto 20px;
+    }
+
+    .buttonGroup {
+        justify-content: center;
+        flex-wrap: wrap; /* safety wrap for very tiny screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+    }
+    
+    .overlay {
+        background: rgba(249, 247, 242, 0.85); /* Solidify background further */
     }
 
     .buttonGroup {
@@ -216,5 +242,30 @@
     .secondaryButton {
         justify-content: center;
         width: 100%;
+    }
+}
+
+@media (max-width: 649px) {
+    .homeContainer {
+        padding: 5% 15px; /* Narrower padding for tiny mobile */
+    }
+    
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+
+    .imageContainer {
+        max-height: 35vh;
+        margin-top: 10px;
+    }
+
+    .primaryButton, .secondaryButton {
+        padding: 12px 20px;
+        font-size: 1rem;
     }
 }

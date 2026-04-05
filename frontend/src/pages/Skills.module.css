@@ -201,3 +201,31 @@
     gap: 40px;
   }
 }
+
+@media (max-width: 649px) {
+  .skillsContainer {
+    padding: 20px 10px 40px;
+  }
+
+  .contentWrapper {
+    padding: 0 10px;
+  }
+  
+  .heading {
+    font-size: 2.2rem;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .skillCategory {
+    min-width: 100%;
+    width: 100%;
+    padding: 15px 10px;
+  }
+
+  .skillsGrid {
+    gap: 20px;
+  }
+}

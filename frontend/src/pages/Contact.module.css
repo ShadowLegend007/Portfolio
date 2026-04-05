@@ -295,3 +295,30 @@
   justify-content: center;
   gap: 8px;
 }
+
+@media (max-width: 649px) {
+  .contentWrapper {
+    padding: 4rem 10px 2rem;
+    gap: 20px;
+  }
+  
+  .title {
+    font-size: 2.8rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .formCard {
+    padding: 30px 15px 15px 15px;
+  }
+  
+  .formGrid {
+    grid-template-columns: 1fr; /* Stack firstName and lastName vertically */
+  }
+  
+  .fullWidth {
+    grid-column: 1 / -1;
+  }
+}
