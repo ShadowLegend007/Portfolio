@@ -2,7 +2,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import PageTransitionOverlay from "./components/PageTransitionOverlay";
 import Home from "./pages/Home";
-import About from "./pages/About";
+
 import Skills from "./pages/Skills";
 import Education from "./pages/Education";
 import Experience from "./pages/Experience";
@@ -26,7 +26,7 @@ const App = () => {
         <div className="page-container">
           <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+
           <Route path="/skills" element={<Skills />} />
           <Route path="/education" element={<Education />} />
           <Route path="/experience" element={<Experience />} />
